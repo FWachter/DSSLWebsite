@@ -1,0 +1,460 @@
+<!DOCTYPE HTML>
+
+<!-- 
+PROGRAMMER: Frederick Wachter
+DATE CREATED: 2016-04-27
+LAST MODIFIED: 2016-05-01
+PURPOSE: Official website of the Drexel Space Systems Laboratory
+CONTACT INFO: wachterfreddy@gmail.com
+-->
+
+<!--
+Things to do:
+ - Need to notify people using internet explorer that this website does not work on that browser
+-->
+
+<head>
+	<title>Drexel Space Systems Laboratory</title>
+	<link rel="shortcut icon" href="img/Logo.png"/>
+
+	<meta name="description" content="Official website for the Drexel Space Systems Laboratory"/>
+	<meta name="keywords" content="DSSL, Drexel Space Systems, Drexel Engineering, Drexel University, Space Systems"/>
+	<meta name="author" content="Frederick Wachter"/>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<style>
+		/* -------------------- ----- -------------------- */
+		/* -------------------- Fonts -------------------- */		
+		/* -------------------- ----- -------------------- */
+		@font-face {
+			font-family:SlimJoe;
+			src: url("font/Slim_Joe.otf") format("opentype");
+		}
+		@font-face {
+			font-family:HelveticaNeue-Thin;
+			src: url("font/HelveticaNeue-Thin.otf") format("opentype");
+		}
+		@font-face {
+			font-family:HelveticaNeue-Light;
+			src: url("font/HelveticaNeue-Light.otf") format("opentype");
+		}
+		
+		/* -------------------- --------- -------------------- */
+		/* -------------------- Reset CSS -------------------- */	
+		/* -------------------- --------- -------------------- */
+		html {
+			background-color:#0A0A0A;
+		}
+		body, main, div {
+			cursor:auto;
+		}
+		html, body, main {
+			height:100%;
+			width:100%;
+			overflow:hidden;
+		}
+		html, body, main, div, section, img, h1 {
+			margin:0;
+			padding:0;
+			z-index:0;
+			font-family:HelveticaNeue-Thin, Helvetica, Arial;
+		}
+		section {
+			width:100%;
+		}
+		h1 {
+			font-size:30px;
+		}
+		.icon:hover {
+			opacity:0.8;
+			cursor:pointer;
+		}
+		.active {
+			background-color:black;
+			height:20px;
+			width:20px;
+			border:2px solid white;
+			border-radius:12px;
+		}
+		.notActive {
+			background-color:white;
+			height:24px;
+			width:24px;
+			border-radius:12px;
+		}
+
+		/* -------------------- --------------- -------------------- */
+		/* -------------------- Sidebar Seciton -------------------- */		
+		/* -------------------- --------------- -------------------- */
+		#sidebar {
+			position:fixed;
+			top:200px;
+			right:0;
+			height:65px;
+			/*height:172px;*/
+			width:66px;
+			border-radius:5px 0px 0px 5px;
+			background-color:black;
+			z-index:2;
+			-webkit-transition:opacity 1.5s;
+			transition:opacity 1.5s;
+		}
+		.sidebarIcon {
+			margin:7px 7px 0px 7px;
+			width:50px;
+		}
+
+		/* -------------------- ------------- -------------------- */
+		/* -------------------- Intro Seciton -------------------- */			
+		/* -------------------- ------------- -------------------- */
+		#intro {
+			position:relative;
+			height:800px;
+			background:#0A0A0A url("img/Space.jpg") no-repeat center center;
+			background-size:cover;
+			-webkit-transition:opacity 1.5s;
+			transition:opacity 1.5s;
+		}
+		#logo {
+			position:absolute;
+			margin:-200px 0 0 -125px;
+			top:50%;
+			left:50%;
+		}
+		#introText {
+			position:fixed;
+			margin:70px 0 0 -250px;
+			top:50%;
+			left:50%;
+			font-size:35px;
+			color:white;
+		}
+
+		/* -------------------- -------- -------------------- */
+		/* -------------------- Menu Bar -------------------- */			
+		/* -------------------- -------- -------------------- */
+		#menubar {
+			position:absolute;
+			top:0;
+			height:70px;
+			width:100%;
+			font-size:25px;
+			text-align:center;
+			-webkit-transition:top 1.5s;
+			transition:top 1.5s;
+		}
+		#selected {
+			position:absolute;
+			top:15px;
+			left:-12px;
+			height:38px;
+			width:10px;
+			display:inline-block;
+			border:1px solid white;
+			border-radius:3px;
+			background-color:white;
+			-webkit-transition:left 0.5s, width 0.5s;
+			transition:left 0.5s, width 0.5s;
+			opacity:0;
+		}
+		.sectionTitle {
+			position:relative;
+			margin:15px 20px;
+			padding:5px 10px;
+			display:inline-block;
+			border:1px solid white;
+			border-radius:3px;
+			color:white;
+			-webkit-transition:color 1s;
+			transition:color 1s;
+		}
+		.sectionTitle:hover {
+			background-color:rgba(150,150,150,0.5);
+			cursor:pointer;
+		}
+
+		/* -------------------- ----- -------------------- */
+		/* -------------------- Reset -------------------- */
+		/* -------------------- ----- -------------------- */
+		#reset {
+			position:absolute;
+			bottom:-50px;
+			height:50px;
+			width:100%;
+			background-color:rgba(150,150,150,0.7);
+			text-align:center;
+			-webkit-transition:bottom 1.5s;
+			transition:bottom 1.5s;
+		}
+		#reset:hover {
+			background-color:rgba(150,150,150,0.9);
+			cursor:pointer;
+		}
+		#arrow {
+			margin:7px;
+			font-size:40px;
+			color:white;
+		}
+
+		/* -------------------- -------- -------------------- */
+		/* -------------------- Sections -------------------- */
+		/* -------------------- -------- -------------------- */
+		#sections {
+			position:absolute;
+			width:100%;
+			background:#0A0A0A url("img/MainBuilding.png") no-repeat center center;
+			background-size:cover;
+			opacity:0;
+			-webkit-transition:top 1.5s, opacity 1s;
+			transition:top 1.5s, opacity 1s;
+		}
+		.section {
+			position:absolute;
+			top:0;
+			width:100%;
+			background-color:rgba(255,255,255,0.7);
+			text-align:center;
+			color:rgb(7,41,77);
+			-webkit-transition:right 1s;
+			transition:right 1s;
+		}
+		.title {
+			margin:50px 30px 30px 30px;
+			font-size:50px;
+			text-decoration:underline;
+		}
+	</style>
+</head>
+
+<body>
+
+	<header></header>
+	<main>
+		<div>
+			<section id="sidebar">
+				<a href="https://www.facebook.com/DrexelSpaceSystems" target="_blank">	
+					<img class="sidebarIcon icon" src="img/icons/Facebook.png"/>
+				</a>
+				<!-- <a href="https://www.youtube.com/channel/UCgnxbWOmcXFhQtGtEecXSpg" target="_blank">
+					<img class="sidebarIcon icon" src="img/icons/YouTube.png"/>
+				</a>
+				<a href="https://www.linkedin.com/in/frederickwachter" target="_blank">
+					<img class="sidebarIcon icon" src="img/icons/LinkedIn.png"/>
+				</a> -->
+			</section>
+			
+			<section id="intro">
+				<div id="logo">
+					<img src="img/Logo.png" width="250px"/>
+				</div>
+				<p id="introText">Drexel Space Systems Laboratory</p>
+			</section>
+			<section id="sections">
+				<div id="aboutUs" class="section">
+					<p class="title">About Us</p>
+				</div>
+				<div id="projects" class="section">
+					<p class="title">Projects</p>
+				</div>
+				<div id="seniorDesign" class="section">
+					<p class="title">Senior Design</p>
+				</div>
+				<div id="people" class="section">
+					<p class="title">People</p>
+				</div>
+				<div id="contactUs" class="section">
+					<p class="title">Contact Us</p>
+				</div>
+			</section>
+			<section id="menubar">
+				<div id="selected"></div>
+				<div class="sectionTitle">About Us</div>
+				<div class="sectionTitle">Projects</div>
+				<div class="sectionTitle">Senior Design</div>
+				<div class="sectionTitle">People</div>
+				<div class="sectionTitle">Contact Us</div>
+			</section>
+			<section id="reset">
+				<p id="arrow">^</p>
+			</section>
+		</div>
+	</main>
+
+	<script>
+		/* VARIABLES */
+		var index = 0;
+		var sectionFlag   = 0;
+		var screenFlag    = 0;
+		var previousIndex = -1;
+		var totalSections = $(".section").length;
+
+		/* -------------------- ------------- -------------------- */
+		/* -------------------- Window Resize -------------------- */			
+		/* -------------------- ------------- -------------------- */
+		windowResize();
+		$(window).resize(function() {
+			windowResize();
+		});
+		function windowResize() {
+			var windowHeight = $(window).height();
+			var windowWidth = $(window).width();
+			
+			$("#intro").css({height:$(window).height()});
+			$("#sections").css({
+				"height":(windowHeight) + "px"
+			});
+			if (screenFlag == 1) {
+				for (var i = 0; i < totalSections; i++) {
+					if (i != previousIndex) {	
+						$(".section").eq(i).css({
+							"height":(windowHeight - 120) + "px",
+							"right":(-windowWidth) + "px"
+						});
+					} else {
+						$(".section").eq(i).css({
+							"height":(windowHeight - 120) + "px"
+						});
+					}
+				}
+			} else {
+				$(".section").css({
+					"height":(windowHeight - 120) + "px",
+					"right":(-windowWidth) + "px"
+				});
+			}
+			if (sectionFlag == 1) {
+				$("#menubar").css({
+					"top":(windowHeight - 120) + "px"
+				});
+			} else {
+				$("#sections").css({
+					"top":(-windowHeight) + "px"
+				});
+			}
+		}
+
+		/* -------------------- ------------------ -------------------- */
+		/* -------------------- Menu Item Selector -------------------- */			
+		/* -------------------- ------------------ -------------------- */
+		$(".sectionTitle").click(function() {
+			if (sectionFlag == 0) {
+				sectionFlag = 1;
+				var windowHeight = $(window).height();
+				
+				$("#menubar").css({
+					"top":(windowHeight - 120) + "px"
+				});
+				$("#reset").css({
+					"bottom":"0px"
+				});
+				$("#sections").css({
+					"top":"0",
+					"opacity":"1"
+				});
+				$("#intro").css({
+					"opacity":"0"
+				});
+				$("#sidebar").css({
+					"opacity":"0"
+				});
+			}
+			/* HINT: Index starts from 0 */
+			index = $(this).index() - 1;
+			var leftPosition = $(".sectionTitle").eq(index).offset().left;
+			var titleWidth = $(".sectionTitle").eq(index).width() + 20;
+			
+			if (screenFlag == 0) { // If no screens are showing
+				screenFlag = 1;
+				$(".section").eq(index).css({
+					"right":"0"
+				});
+				$(".sectionTitle").eq(index).css({
+					"color":"black"
+				});
+				$("#selected").css({
+					"left":leftPosition,
+					"width":titleWidth,
+					"opacity":"1"
+				});
+				previousIndex = index;
+			} else {
+				var windowWidth = $(window).width();
+				
+				if (previousIndex == index) { // If the current screen has been clicked again
+					$(".section").eq(index).css({
+						"right":(-windowWidth) + "px"
+					});
+					$(".sectionTitle").eq(index).css({
+						"color":""
+					});
+					$("#selected").css({
+						"left":"",
+						"width":"",
+						"opacity":"1"
+					});
+					screenFlag = 0;
+				} else { // If a screen is showing and a new one has been clicked
+					$(".section").eq(previousIndex).css({
+						"right":(-windowWidth) + "px"
+					});
+					$(".sectionTitle").eq(previousIndex).css({
+						"color":""
+					});
+					$(".section").eq(index).css({
+						"right":"0"
+					});
+					$(".sectionTitle").eq(index).css({
+						"color":"black"
+					});
+					$("#selected").css({
+						"left":leftPosition,
+						"width":titleWidth
+					});
+					previousIndex = index;
+				}
+			}
+		});
+
+		$("#reset").click(function() {
+			sectionFlag = 0;
+			var windowHeight = $(window).height();
+			var windowWidth = $(window).width();
+			
+			$("#menubar").css({
+				"top":""
+			});
+			$("#reset").css({
+				"bottom":""
+			});
+			$("#sections").css({
+				"top":(-windowHeight) + "px",
+				"opacity":""
+			});
+			$("#intro").css({
+				"opacity":""
+			});
+			$("#sidebar").css({
+				"opacity":""
+			});
+			$(".sectionTitle").eq(index).css({
+				"color":""
+			});
+			$("#selected").css({
+				"left":"",
+				"width":"",
+				"opacity":""
+			});
+
+			if (screenFlag == 1) {
+				$(".section").eq(previousIndex).css({
+					"right":(-windowWidth) + "px"
+				});
+				screenFlag = 0;
+			}
+		});
+	</script>
+
+</body>
+
+
