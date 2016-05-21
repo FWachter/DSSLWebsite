@@ -1,0 +1,279 @@
+/* -------------------- ----- -------------------- */
+/* -------------------- Fonts -------------------- */		
+/* -------------------- ----- -------------------- */
+@font-face {
+	font-family:SlimJoe;
+	src: url("font/Slim_Joe.otf") format("opentype");
+}
+@font-face {
+	font-family:HelveticaNeue-Thin;
+	src: url("font/HelveticaNeue-Thin.otf") format("opentype");
+}
+@font-face {
+	font-family:HelveticaNeue-Light;
+	src: url("font/HelveticaNeue-Light.otf") format("opentype");
+}
+
+/* -------------------- --------- -------------------- */
+/* -------------------- Reset CSS -------------------- */	
+/* -------------------- --------- -------------------- */
+html, body, main, div, section, img, h1, p {
+	margin:0;
+	padding:0;
+	z-index:0;
+	font-family:HelveticaNeue-Thin, Helvetica, Arial;
+}
+html, body, main {
+	height:100%;
+	width:100%;
+	overflow:hidden;
+}
+body, main, div {
+	cursor:auto;
+}
+html, body {
+	position:relative;
+	min-width:865px;
+	background-color:#0A0A0A;
+}
+section {
+	width:100%;
+}
+h1 {
+	font-size:30px;
+}
+.icon:hover {
+	opacity:0.8;
+	cursor:pointer;
+}
+.active {
+	background-color:black;
+	height:20px;
+	width:20px;
+	border:2px solid white;
+	border-radius:12px;
+}
+.notActive {
+	background-color:white;
+	height:24px;
+	width:24px;
+	border-radius:12px;
+}
+
+/* -------------------- --------------- -------------------- */
+/* -------------------- Sidebar Seciton -------------------- */		
+/* -------------------- --------------- -------------------- */
+#sidebar {
+	position:fixed;
+	top:200px;
+	right:0;
+	height:65px;
+	/*height:172px;*/
+	width:66px;
+	border-radius:5px 0px 0px 5px;
+	background-color:black;
+	z-index:2;
+	-webkit-transition:opacity 1.5s;
+	transition:opacity 1.5s;
+}
+.sidebarIcon {
+	margin:7px 7px 0px 7px;
+	width:50px;
+}
+
+/* -------------------- ------------- -------------------- */
+/* -------------------- Intro Seciton -------------------- */			
+/* -------------------- ------------- -------------------- */
+#intro {
+	position:relative;
+	height:800px;
+	background:#0A0A0A url("img/Space.jpg") no-repeat center center;
+	background-size:cover;
+	-webkit-transition:opacity 1.5s;
+	transition:opacity 1.5s;
+}
+#logo {
+	position:absolute;
+	margin:-200px 0 0 -125px;
+	top:50%;
+	left:50%;
+}
+#introText {
+	position:fixed;
+	margin:70px 0 0 -250px;
+	top:50%;
+	left:50%;
+	font-size:35px;
+	color:white;
+}
+
+/* -------------------- -------- -------------------- */
+/* -------------------- Menu Bar -------------------- */			
+/* -------------------- -------- -------------------- */
+#menubar {
+	position:absolute;
+	top:0;
+	height:70px;
+	width:100%;
+	font-size:25px;
+	text-align:center;
+	-webkit-transition:top 1.5s;
+	transition:top 1.5s;
+}
+#selected {
+	position:absolute;
+	top:15px;
+	left:-12px;
+	height:38px;
+	width:10px;
+	display:inline-block;
+	border:1px solid white;
+	border-radius:3px;
+	background-color:white;
+	-webkit-transition:left 0.5s, width 0.5s;
+	transition:left 0.5s, width 0.5s;
+	opacity:0;
+}
+.sectionTitle {
+	position:relative;
+	margin:15px 20px;
+	padding:5px 10px;
+	display:inline-block;
+	border:1px solid white;
+	border-radius:3px;
+	color:white;
+	-webkit-transition:color 1s;
+	transition:color 1s;
+}
+.sectionTitle:hover {
+	background-color:rgba(150,150,150,0.5);
+	cursor:pointer;
+}
+
+/* -------------------- ----- -------------------- */
+/* -------------------- Reset -------------------- */
+/* -------------------- ----- -------------------- */
+#reset {
+	position:absolute;
+	bottom:-50px;
+	height:50px;
+	width:100%;
+	background-color:rgba(150,150,150,0.7);
+	text-align:center;
+	-webkit-transition:bottom 1.5s;
+	transition:bottom 1.5s;
+}
+#reset:hover {
+	background-color:rgba(150,150,150,0.9);
+	cursor:pointer;
+}
+#arrow {
+	margin:7px;
+	font-size:40px;
+	color:white;
+}
+
+/* -------------------- -------- -------------------- */
+/* -------------------- Sections -------------------- */
+/* -------------------- -------- -------------------- */
+#sections {
+	position:absolute;
+	width:100%;
+	background:#0A0A0A url("img/MainBuilding.png") no-repeat center center;
+	background-size:cover;
+	opacity:0;
+	-webkit-transition:top 1.5s, opacity 1s;
+	transition:top 1.5s, opacity 1s;
+}
+.section {
+	position:absolute;
+	top:0;
+	width:100%;
+	background-color:rgba(255,255,255,0.7);
+	text-align:center;
+	color:rgb(7,41,77);
+	-webkit-transition:left 1s;
+	transition:left 1s;
+}
+.title {
+	margin:3px 30px 10px 30px;
+	font-size:50px;
+	text-decoration:underline;
+}
+
+/* -------------------- -------- -------------------- */
+/* -------------------- Projects -------------------- */
+/* -------------------- -------- -------------------- */
+#projects {
+	font-size:0;
+}
+.project {
+	position:relative;
+	margin:0px 13px 20px 11px;
+	display:inline-block;
+	text-align:center;
+	color:white;
+	font-size:30px;
+}
+.color1 {
+	background-color:rgb(7,41,77);
+}
+.color2 {
+	background-color:rgb(255,198,0);
+}
+.projectTitle {
+	position:absolute;
+	bottom:0;
+	height:50px;
+	width:100%;
+	background-color:gray;
+}
+.projectInfo {
+	position:absolute;
+	top:0;
+	width:100%;
+	background-color:green;
+}
+.project div p {
+	position:relative;
+	top:50%;
+	margin-top:-18px;
+}
+
+/* -------------------- ---- -------------------- */
+/* -------------------- Form -------------------- */
+/* -------------------- ---- -------------------- */
+#form {
+    margin:100px auto 0px auto;
+    max-width:600px;
+    text-align:center;
+}
+input, textarea {
+    margin:5px 0px 0px 0px;
+    padding:5px;
+    width:60%;
+	border:none;
+	display:block;
+	font-size:16px;
+	font-family:helvetica;
+	-webkit-box-shadow:inset 0px 0px 2px #0A0A0A;
+	-moz-box-shadow:inset 0px 0px 2px #0A0A0A;
+	-o-box-shadow:inset 0px 0px 2px #0A0A0A;
+	box-shadow:inset 0px 0px 2px #0A0A0A;
+}
+input {
+	height:25px;
+    max-width:600px;
+}
+textarea {
+	height:100px;
+    max-width:600px;
+}
+#submitButton {
+	padding:0px;
+	height:35px;
+	color:gray;
+	border:10px solid white;
+	font-size:16px;
+	background-color:white;
+}
