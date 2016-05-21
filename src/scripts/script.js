@@ -1,3 +1,11 @@
+/*
+PROGRAMMER: Frederick Wachter
+DATE CREATED: 2016-04-27
+LAST MODIFIED: 2016-05-21
+PURPOSE: Official website of the Drexel Space Systems Laboratory
+CONTACT INFO: wachterfreddy@gmail.com
+*/
+
 /* -------------------- --------- -------------------- */
 /* -------------------- Variables -------------------- */
 /* -------------------- --------- -------------------- */
@@ -15,17 +23,21 @@ $(window).resize(function() {
 	windowResize();
 });
 function windowResize() {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   LAST MODIFIED: 2016-05-21
+   PURPOSE: Resize document properties with window is resize
+   UPDATES: 2016-05-21 | Add in the setHighlightedSection function and removed reset of '#selected' position
+*/
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
-	var leftPosition = $(".sectionTitle").eq(index).offset().left;
 
 	offsetSections(index,windowWidth); // Update offset of sections
+	setHighlightedSection();
 
 	$("#intro").css({height:$(window).height()});
 	$("#sections").css({
 		"height":(windowHeight) + "px"
-	});$("#selected").css({
-		"left":leftPosition
 	});
 	$(".section").css({
 		"height":(windowHeight - 120) + "px"
@@ -49,10 +61,15 @@ function windowResize() {
 	}
 }
 
-/* -------------------- -------------- -------------------- */
-/* -------------------- Section Offset -------------------- */			
-/* -------------------- -------------- -------------------- */
+/* -------------------- --------- -------------------- */
+/* -------------------- Functions -------------------- */			
+/* -------------------- --------- -------------------- */
 function offsetSections(index,windowWidth) {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   LAST MODIFIED: 2016-05-02
+   PURPOSE: Offset section pages
+*/
 	var offset = (-index) * windowWidth;
 	for (var i = 0; i < totalSections; i++) {
 		$(".section").eq(i).css({
@@ -60,13 +77,67 @@ function offsetSections(index,windowWidth) {
 		});
 	}
 }
+function setHighlightedSection() {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   LAST MODIFIED: 2016-05-21
+   PURPOSE: Set the position of the section title highlighter
+   UPDATES: 2016-05-21 | Changed (previousIndex == index) if statement to not do anything instead of reset
+*/
+   	if (sectionFlag == 1) {
+		var windowWidth  = $(window).width();
+		var leftPosition = $(".sectionTitle").eq(index).offset().left;
+		var titleWidth   = $(".sectionTitle").eq(index).width() + 20;
+		var offset       = (-index) * windowWidth;
+		if (screenFlag == 0) { // If no sections are showing
+			screenFlag = 1;
+			offsetSections(index,windowWidth); // Update offset of sections
+			$(".sectionTitle").eq(index).css({
+				"color":"black"
+			});
+			$("#selected").css({
+				"left":leftPosition,
+				"width":titleWidth,
+				"opacity":"1"
+			});
+			previousIndex = index;
+		} else {
+			if (previousIndex == index) { // If the current section button has been clicked again or window resize
+				$("#selected").css({
+					"left":leftPosition
+				});
+			} else { // If a section is showing and a new menu button has been clicked
+				offsetSections(index,windowWidth); // Update offset of sections
+				$(".sectionTitle").eq(previousIndex).css({
+					"color":""
+				});
+				$(".sectionTitle").eq(index).css({
+					"color":"black"
+				});
+				$("#selected").css({
+					"left":leftPosition,
+					"width":titleWidth
+				});
+				previousIndex = index;
+			}
+		}
+	}
+}
 
 /* -------------------- ------------------ -------------------- */
 /* -------------------- Menu Item Selector -------------------- */
 /* -------------------- ------------------ -------------------- */
 $(".sectionTitle").click(function() {
-	if (sectionFlag == 0) {
-		sectionFlag = 1;
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   LAST MODIFIED: 2016-05-21
+   PURPOSE: Bring up section pages when the section title is clicked and change current page
+   UPDATES: 2016-05-21 | Removed parts and added to setHighlightedSection to allow for window resize trigger
+*/
+	index = $(this).index() - 1; // get the section that was clicked
+
+	if (sectionFlag == 0) { // if there isn't any pages showing
+		sectionFlag = 1; // set the flag to indicate that a page is now showing
 		var windowHeight = $(window).height();
 		
 		$("#menubar").css({
@@ -86,59 +157,19 @@ $(".sectionTitle").click(function() {
 			"opacity":"0"
 		});
 	}
-	/* HINT: Index starts from 0 */
-	index = $(this).index() - 1;
-	var windowWidth  = $(window).width();
-	var leftPosition = $(".sectionTitle").eq(index).offset().left;
-	var titleWidth   = $(".sectionTitle").eq(index).width() + 20;
-	var offset       = (-index) * windowWidth;
-	if (screenFlag == 0) { // If no sections are showing
-		screenFlag = 1;
-		offsetSections(index,windowWidth); // Update offset of sections
-		$(".sectionTitle").eq(index).css({
-			"color":"black"
-		});
-		$("#selected").css({
-			"left":leftPosition,
-			"width":titleWidth,
-			"opacity":"1"
-		});
-		previousIndex = index;
-	} else {
-		if (previousIndex == index) { // If the current section button has been clicked again
-			$(".sectionTitle").eq(index).css({
-				"color":""
-			});
-			$("#selected").css({
-				"left":"",
-				"width":"",
-				"opacity":"1"
-			});
-			index = -1; // Reset the menu button index indicator
-			offsetSections(index,windowWidth); // Update offset of sections
-			screenFlag = 0; // Reset the current section indicator
-			previousIndex = -1; // Reset the previous index indicator
-		} else { // If a section is showing and a new menu button has been clicked
-			offsetSections(index,windowWidth); // Update offset of sections
-			$(".sectionTitle").eq(previousIndex).css({
-				"color":""
-			});
-			$(".sectionTitle").eq(index).css({
-				"color":"black"
-			});
-			$("#selected").css({
-				"left":leftPosition,
-				"width":titleWidth
-			});
-			previousIndex = index;
-		}
-	}
+
+	setHighlightedSection(); // update the position of the section hightlighter
 });
 
 /* -------------------- ------------ -------------------- */
 /* -------------------- Reset Screen -------------------- */
 /* -------------------- ------------ -------------------- */
 $("#reset").click(function() {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   LAST MODIFIED: 2016-05-02
+   PURPOSE: Reset the screen back to the homepage
+*/
 	sectionFlag = 0;
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
@@ -176,6 +207,11 @@ $("#reset").click(function() {
 /* -------------------- Contact Form Submission -------------------- */
 /* -------------------- ----------------------- -------------------- */
 $("#contactForm").submit(function(event) {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   LAST MODIFIED: 2016-05-02
+   PURPOSE: Check for errors in the form and build the message to send using Mandrill service
+*/
 	var errorMessage = "";
 	event.preventDefault(); // Stops URL form update
 
@@ -213,6 +249,11 @@ $("#contactForm").submit(function(event) {
 	}
 })
 function sendMail() {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   LAST MODIFIED: 2016-05-02
+   PURPOSE: Send mail using the Mandripp Service
+*/
 	$.ajax({
 		url: "https://mandrillapp.com/api/1.0/messages/send.json",
 		type: "POST",
@@ -236,6 +277,11 @@ function sendMail() {
 	//});
 }
 function generateResponse() {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   LAST MODIFIED: 2016-05-02
+   PURPOSE: Build message details for Mandrill service
+*/
 	var response = '';
 	response = 'Name: ' + $("#name").val() + '<br/>';
 	response = response + 'Email: ' + $("#email").val() + '<br/>';
@@ -250,6 +296,11 @@ function generateResponse() {
 	return response;
 }
 function currentDate() {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   LAST MODIFIED: 2016-05-02
+   PURPOSE: Get the current date
+*/
 	var currentDate = new Date;
 	var Day = currentDate.getDate();
 	if (Day < 10) {
@@ -264,6 +315,11 @@ function currentDate() {
 	return fullDate;
 }
 function currentTime() {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   LAST MODIFIED: 2016-05-02
+   PURPOSE: Get the current time
+*/
 	var currentTime = new Date;
 	var Minutes = currentTime.getMinutes();
 	if (Minutes < 10) {
@@ -283,6 +339,11 @@ function currentTime() {
 	return Time;
 }
 function clearForm() {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   LAST MODIFIED: 2016-05-02
+   PURPOSE: Clear the form
+*/
 	var elems = document.getElementsByTagName("input");
 	var l = elems.length - 1;
 	for (var i = 0; i < l; ++i) {
