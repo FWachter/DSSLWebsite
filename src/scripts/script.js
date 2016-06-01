@@ -27,8 +27,8 @@ function windowResize() {
    DATE CREATED: 2016-05-02
    LAST MODIFIED: 2016-05-31
    PURPOSE: Resize document properties with window is resize
-   UPDATES: 2016-05-21 | Add in the setHighlightedSection function and removed reset of '#selected' position
-            2016-05-31 | Removed scaling of project divs
+   MAJOR CHANGES: 2016-05-21 | Add in the setHighlightedSection function and removed reset of '#selected' position
+                  2016-05-31 | Removed scaling of project divs
 */
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
@@ -76,8 +76,7 @@ function setHighlightedSection() {
    DATE CREATED: 2016-05-02
    LAST MODIFIED: 2016-05-31
    PURPOSE: Set the position of the section title highlighter
-   UPDATES: 2016-05-21 | Changed (previousIndex == index) if statement to not do anything instead of reset
-            2016-05-31 | Added menubar background fade
+   MAJOR CHANGES: 2016-05-21 | Changed (previousIndex == index) if statement to not do anything instead of reset
 */
    	if (sectionFlag == 1) {
 		var windowWidth  = $(window).width();
@@ -130,7 +129,7 @@ $(".sectionTitle").click(function() {
    DATE CREATED: 2016-05-02
    LAST MODIFIED: 2016-05-21
    PURPOSE: Bring up section pages when the section title is clicked and change current page
-   UPDATES: 2016-05-21 | Removed parts and added to setHighlightedSection to allow for window resize trigger
+   MAJOR CHANGES: 2016-05-21 | Removed parts and added to setHighlightedSection to allow for window resize trigger
 */
 	index = $(this).index() - 1; // get the section that was clicked
 
@@ -167,9 +166,6 @@ $(".icon-phone").hover(
 */
 	function() {
 		var index = $(".icon-phone").index(this);
-		if (index > 1) {
-			index++;
-		}
 		$(".memberPhone").eq(index).css({
 			"margin-top":"301px",
 			"opacity":"1"
@@ -191,9 +187,6 @@ $(".icon-email").hover(
 */
 	function() {
 		var index = $(".icon-email").index(this);
-		if (index > 1) {
-			index++;
-		}
 		$(".memberEmail").eq(index).css({
 			"margin-top":"301px",
 			"opacity":"1"
@@ -216,6 +209,7 @@ $("#reset").click(function() {
    LAST MODIFIED: 2016-05-02
    PURPOSE: Reset the screen back to the homepage
 */
+	screenFlag = 0;
 	sectionFlag = 0;
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
@@ -245,9 +239,9 @@ $("#reset").click(function() {
 		"width":"",
 		"opacity":""
 	});
+
 	index = -1; // Reset the menu button index indicator
 	offsetSections(index);
-	screenFlag = 0;
 });
 
 /* -------------------- ----------------------- -------------------- */
