@@ -1,7 +1,7 @@
 /*
 PROGRAMMER: Frederick Wachter
 DATE CREATED: 2016-04-27
-LAST MODIFIED: 2016-05-21
+LAST MODIFIED: 2016-05-31
 PURPOSE: Official website of the Drexel Space Systems Laboratory
 CONTACT INFO: wachterfreddy@gmail.com
 */
@@ -25,9 +25,10 @@ $(window).resize(function() {
 function windowResize() {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-21
+   LAST MODIFIED: 2016-05-31
    PURPOSE: Resize document properties with window is resize
    UPDATES: 2016-05-21 | Add in the setHighlightedSection function and removed reset of '#selected' position
+            2016-05-31 | Removed scaling of project divs
 */
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
@@ -41,13 +42,6 @@ function windowResize() {
 	});
 	$(".section").css({
 		"height":(windowHeight - 120) + "px"
-	});
-	$(".project").css({
-		"height":((windowHeight - 210) / 2) - 10 + "px",
-		"width":((windowWidth - 40) / 2) - 18 + "px"
-	});
-	$(".projectInfo").css({
- 		"height":((windowHeight - 210) / 2) - 60 + "px"
 	});
 
 	if (sectionFlag == 1) {
@@ -80,9 +74,10 @@ function offsetSections(index,windowWidth) {
 function setHighlightedSection() {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-21
+   LAST MODIFIED: 2016-05-31
    PURPOSE: Set the position of the section title highlighter
    UPDATES: 2016-05-21 | Changed (previousIndex == index) if statement to not do anything instead of reset
+            2016-05-31 | Added menubar background fade
 */
    	if (sectionFlag == 1) {
 		var windowWidth  = $(window).width();
@@ -99,6 +94,9 @@ function setHighlightedSection() {
 				"left":leftPosition,
 				"width":titleWidth,
 				"opacity":"1"
+			});
+			$("#menubar").css({
+				"background":"rgba(25,25,25,0.95)"
 			});
 			previousIndex = index;
 		} else {
@@ -124,9 +122,9 @@ function setHighlightedSection() {
 	}
 }
 
-/* -------------------- ------------------ -------------------- */
-/* -------------------- Menu Item Selector -------------------- */
-/* -------------------- ------------------ -------------------- */
+/* -------------------- ----------------- -------------------- */
+/* -------------------- Element Functions -------------------- */
+/* -------------------- ----------------- -------------------- */
 $(".sectionTitle").click(function() {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
@@ -161,6 +159,54 @@ $(".sectionTitle").click(function() {
 	setHighlightedSection(); // update the position of the section hightlighter
 });
 
+$(".icon-phone").hover(
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-31
+   LAST MODIFIED: 2016-05-31
+   PURPOSE: Trigger phone number for hovered member to appear
+*/
+	function() {
+		var index = $(".icon-phone").index(this);
+		if (index > 1) {
+			index++;
+		}
+		$(".memberPhone").eq(index).css({
+			"margin-top":"301px",
+			"opacity":"1"
+		});
+	}, function() {
+		var index = $(".icon-phone").index(this);
+		$(".memberPhone").eq(index).css({
+			"margin-top":"",
+			"opacity":""
+		});
+	}
+);
+
+$(".icon-email").hover(
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-31
+   LAST MODIFIED: 2016-05-31
+   PURPOSE: Trigger email for hovered member to appear
+*/
+	function() {
+		var index = $(".icon-email").index(this);
+		if (index > 1) {
+			index++;
+		}
+		$(".memberEmail").eq(index).css({
+			"margin-top":"301px",
+			"opacity":"1"
+		});
+	}, function() {
+		var index = $(".icon-email").index(this);
+		$(".memberEmail").eq(index).css({
+			"margin-top":"",
+			"opacity":""
+		});
+	}
+);
+
 /* -------------------- ------------ -------------------- */
 /* -------------------- Reset Screen -------------------- */
 /* -------------------- ------------ -------------------- */
@@ -175,7 +221,8 @@ $("#reset").click(function() {
 	var windowWidth = $(window).width();
 	
 	$("#menubar").css({
-		"top":""
+		"top":"",
+		"background":""
 	});
 	$("#reset").css({
 		"bottom":""
