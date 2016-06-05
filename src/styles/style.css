@@ -1,7 +1,6 @@
 /*
 PROGRAMMER: Frederick Wachter
 DATE CREATED: 2016-04-27
-LAST MODIFIED: 2016-05-31
 PURPOSE: Official website of the Drexel Space Systems Laboratory
 CONTACT INFO: wachterfreddy@gmail.com
 */
@@ -263,7 +262,7 @@ a {
 	transition:left 1s;
 }
 .title {
-	margin:3px 30px 10px 30px;
+	margin:5px 30px;
 	font-size:50px;
 	color:rgb(255,198,0);
 }
@@ -311,7 +310,7 @@ a {
 }
 .bottomSpacer {
 	width:100%;
-	height:30px;
+	height:15px;
 }
 
 /* -------------------- ------- -------------------- */
@@ -320,45 +319,85 @@ a {
 .member {
 	display:inline-block;
 	position:relative;
-	margin:18px 10px;
+	margin:5px 10px 30px 10px;
 	cursor:pointer;
 }
 .memberBackground {
 	position:relative;
 	height:300px;
-	width:250px;
+	width:220px;
 	border:1px solid black;
 	background-color:rgba(35,35,35,0.95);
 	z-index:1;
 }
 .memberImage {
+	position:relative;
 	margin:3px;
 	height:250px;
-	width:242px;
+	width:212px;
 	border:1px solid black;
 	background-color:rgba(225,225,224,0.9);
+}
+.memberInfo {
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:260px;
+	width:100%;
+	color:white;
+	text-align:center;
+	opacity:0;
+	z-index:2;
+}
+.memberText {
+	font-size:18px;
+}
+.memberInfo hr {
+	margin:0px auto;
+	width:85%;
+	border-color:white;
+}
+.memberName {
+	font-size:22px;
+	font-weight:bold;
+}
+.memberDescription {
+	margin-top:5px;
+	font-size:22px;
+}
+.advisorSpacer {
+	height:55px;
+	width:100%;
+}
+.studentSpacer {
+	height:22px;
+	width:100%;
 }
 .iconBar {
 	position:relative;
 	margin:0px 3px 3px 3px;
 	height:37px;
-	width:242px;
+	width:212px;
 	text-align:center;
 }
 .iconImage {
+	margin-top:1px;
 	height:37px;
 }
 .memberImage p {
 	color:rgb(35,35,35);
 	font-size:20px;
 }
-.member:hover {
+.member:hover .memberBackground {
 	background-color:rgba(51,51,51,0.8);
 }
 .member:hover .memberImage {
 	border:none;
 	margin:4px;
-	background-color:rgba(225,225,224,0.1);
+	opacity:0.25;
+}
+.member:hover .memberInfo {
+	opacity:1;
 }
 .member:hover .memberImage p {
 	opacity:0;
@@ -378,8 +417,8 @@ a {
 	position:absolute;
 	margin-top:270px;
 	height:30px;
-	width:250px;
-	font-size:20px;
+	width:220px;
+	font-size:18px;
 	color:white;
 	border:1px solid black;
 	background-color:rgba(51,51,51,0.8);
@@ -392,8 +431,8 @@ a {
 	position:absolute;
 	margin-top:270px;
 	height:30px;
-	width:250px;
-	font-size:20px;
+	width:220px;
+	font-size:18px;
 	color:white;
 	border:1px solid black;
 	background-color:rgba(51,51,51,0.8);
@@ -403,7 +442,61 @@ a {
 	z-index:0;
 }
 .memberPhone p, .memberEmail p {
-	margin-top:2px;
+	margin-top:4px;
+}
+
+/* -------------------- ---------------------------- -------------------- */
+/* -------------------- Advisor/Member/Alumni Images -------------------- */
+/* -------------------- ---------------------------- -------------------- */
+#advisor_Yousuff {
+	background:#0A0A0A url("img/Advisors/Yousuff.jpg") no-repeat center center;
+}
+#advisor_Swoboda {
+	background:#0A0A0A url("img/Advisors/Swoboda.png") no-repeat center center;
+}
+#advisor_Kujawski {
+	background:#0A0A0A url("img/NoPicture.jpg") no-repeat center center;
+}
+#advisor_Lamberson {
+	background:#0A0A0A url("img/Advisors/Lamberson.jpg") no-repeat center center;
+}
+#advisor_Yousuff, #advisor_Swoboda, #advisor_Kujawski, #advisor_Lamberson {
+	position:absolute;
+	top:0px;
+	height:100%;
+	width:100%;
+	background-size:cover;
+}
+
+#student_Ireland {
+	background:#0A0A0A url("img/Students/Ireland.jpg") no-repeat center center;
+}
+#student_Wachter {
+	background:#0A0A0A url("img/Students/Wachter.jpg") no-repeat center center;
+}
+#student_Turchi {
+	background:#0A0A0A url("img/Students/Turchi.jpg") no-repeat center center;
+}
+#student_Katz {
+	background:#0A0A0A url("img/NoPicture.jpg") no-repeat center center;
+}
+#student_Ireland, #student_Wachter, #student_Turchi, #student_Katz {
+	position:absolute;
+	top:0px;
+	height:100%;
+	width:100%;
+	background-size:cover;
+}
+
+#alumni_Daily {
+	background:#0A0A0A url("img/Alumni/Daily.jpg") no-repeat center center;
+}
+#alumni_Daily {
+	position:absolute;
+	top:0px;
+	height:100%;
+	width:100%;
+	background-size:cover;
 }
 
 /* -------------------- ---- -------------------- */

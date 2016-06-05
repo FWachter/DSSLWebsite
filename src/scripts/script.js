@@ -1,7 +1,6 @@
 /*
 PROGRAMMER: Frederick Wachter
 DATE CREATED: 2016-04-27
-LAST MODIFIED: 2016-05-31
 PURPOSE: Official website of the Drexel Space Systems Laboratory
 CONTACT INFO: wachterfreddy@gmail.com
 */
@@ -25,7 +24,6 @@ $(window).resize(function() {
 function windowResize() {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-31
    PURPOSE: Resize document properties with window is resize
    MAJOR CHANGES: 2016-05-21 | Add in the setHighlightedSection function and removed reset of '#selected' position
                   2016-05-31 | Removed scaling of project divs
@@ -61,7 +59,6 @@ function windowResize() {
 function offsetSections(index,windowWidth) {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-02
    PURPOSE: Offset section pages
 */
 	var offset = (-index) * windowWidth;
@@ -74,7 +71,6 @@ function offsetSections(index,windowWidth) {
 function setHighlightedSection() {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-31
    PURPOSE: Set the position of the section title highlighter
    MAJOR CHANGES: 2016-05-21 | Changed (previousIndex == index) if statement to not do anything instead of reset
 */
@@ -127,7 +123,6 @@ function setHighlightedSection() {
 $(".sectionTitle").click(function() {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-21
    PURPOSE: Bring up section pages when the section title is clicked and change current page
    MAJOR CHANGES: 2016-05-21 | Removed parts and added to setHighlightedSection to allow for window resize trigger
 */
@@ -161,7 +156,6 @@ $(".sectionTitle").click(function() {
 $(".icon-phone").hover(
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-31
-   LAST MODIFIED: 2016-05-31
    PURPOSE: Trigger phone number for hovered member to appear
 */
 	function() {
@@ -178,11 +172,29 @@ $(".icon-phone").hover(
 		});
 	}
 );
+$(".memberPhone").hover(
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-06-05
+   PURPOSE: Trigger phone number for hovered member to appear
+*/
+	function() {
+		var index = $(".memberPhone").index(this);
+		$(".memberPhone").eq(index).css({
+			"margin-top":"301px",
+			"opacity":"1"
+		});
+	}, function() {
+		var index = $(".memberPhone").index(this);
+		$(".memberPhone").eq(index).css({
+			"margin-top":"",
+			"opacity":""
+		});
+	}
+);
 
 $(".icon-email").hover(
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-31
-   LAST MODIFIED: 2016-05-31
    PURPOSE: Trigger email for hovered member to appear
 */
 	function() {
@@ -199,6 +211,25 @@ $(".icon-email").hover(
 		});
 	}
 );
+$(".memberEmail").hover(
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-06-05
+   PURPOSE: Trigger phone number for hovered member to appear
+*/
+	function() {
+		var index = $(".memberEmail").index(this);
+		$(".memberEmail").eq(index).css({
+			"margin-top":"301px",
+			"opacity":"1"
+		});
+	}, function() {
+		var index = $(".memberEmail").index(this);
+		$(".memberEmail").eq(index).css({
+			"margin-top":"",
+			"opacity":""
+		});
+	}
+);
 
 /* -------------------- ------------ -------------------- */
 /* -------------------- Reset Screen -------------------- */
@@ -206,7 +237,6 @@ $(".icon-email").hover(
 $("#reset").click(function() {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-02
    PURPOSE: Reset the screen back to the homepage
 */
 	screenFlag = 0;
@@ -250,7 +280,6 @@ $("#reset").click(function() {
 $("#contactForm").submit(function(event) {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-02
    PURPOSE: Check for errors in the form and build the message to send using Mandrill service
 */
 	var errorMessage = "";
@@ -292,7 +321,6 @@ $("#contactForm").submit(function(event) {
 function sendMail() {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-02
    PURPOSE: Send mail using the Mandripp Service
 */
 	$.ajax({
@@ -320,7 +348,6 @@ function sendMail() {
 function generateResponse() {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-02
    PURPOSE: Build message details for Mandrill service
 */
 	var response = '';
@@ -339,7 +366,6 @@ function generateResponse() {
 function currentDate() {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-02
    PURPOSE: Get the current date
 */
 	var currentDate = new Date;
@@ -358,7 +384,6 @@ function currentDate() {
 function currentTime() {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-02
    PURPOSE: Get the current time
 */
 	var currentTime = new Date;
@@ -382,7 +407,6 @@ function currentTime() {
 function clearForm() {
 /* PROGRAMMER: Frederick Wachter
    DATE CREATED: 2016-05-02
-   LAST MODIFIED: 2016-05-02
    PURPOSE: Clear the form
 */
 	var elems = document.getElementsByTagName("input");
@@ -399,3 +423,5 @@ function clearForm() {
 
 	$("#error").html("");
 }
+
+
