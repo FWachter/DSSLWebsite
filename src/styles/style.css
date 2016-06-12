@@ -274,7 +274,7 @@ a {
 	display:inline-block;
 	position:relative;
 	margin:10px 10px;
-	height:250px;
+	height:300px;
 	width:450px;
 	border:1px solid black;
 	background-color:none;
@@ -282,13 +282,20 @@ a {
 	background-color:rgba(35,35,35,0.95);
 }
 .projectImage {
+	position:relative;
 	margin:3px;
-	height:200px;
+	height:250px;
 	width:442px;
 	border:1px solid black;
 	background-color:rgba(225,225,224,0.9);
 }
-.projectImage p {
+.projectUpdate {
+	position:absolute;
+	top:3px;
+	width:100%;
+	text-align:center;
+}
+.projectUpdate p {
 	color:rgb(35,35,35);
 }
 .projectTitle {
@@ -303,14 +310,44 @@ a {
 .project:hover .projectImage {
 	border:none;
 	margin:4px;
-	background-color:rgba(225,225,224,0.1);
+	opacity:0.1;
 }
-.project:hover .projectImage p {
+.project:hover .projectUpdate p {
 	opacity:0;
 }
 .bottomSpacer {
 	width:100%;
 	height:15px;
+}
+
+/* -------------------- ---------------------- -------------------- */
+/* -------------------- Project/SD Backgrounds -------------------- */
+/* -------------------- ---------------------- -------------------- */
+#project_Hyperloop {
+	background:#0A0A0A url("img/Projects/Hyperloop/images/projectImage.jpg") no-repeat center center;
+}
+#project_RASCAL {
+	background:#0A0A0A url("img/Projects/RASCAL/images/projectImage.png") no-repeat center center;
+}
+#project_FEEP {
+	background:#0A0A0A url("img/Projects/FEEP/images/projectImage.png") no-repeat center center;
+}
+#design_GAVN {
+	background:#0A0A0A url("img/SeniorDesign/GAVN/images/projectImage.png") no-repeat center center;
+}
+#design_Origami {
+	background:#0A0A0A url("img/SeniorDesign/Origami/images/projectImage.png") no-repeat center center;
+}
+#design_MAPS {
+	background:#0A0A0A url("img/SeniorDesign/MAPS/images/projectImage.jpg") no-repeat center center;
+}
+#project_Hyperloop, #project_RASCAL, #project_FEEP, #design_GAVN, #design_Origami, #design_MAPS {
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+	background-size:cover;
 }
 
 /* -------------------- ------- -------------------- */
