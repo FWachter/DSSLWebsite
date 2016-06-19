@@ -277,18 +277,20 @@ $("#reset").click(function() {
 /* -------------------- ----------------------- -------------------- */
 /* -------------------- Contact Form Submission -------------------- */
 /* -------------------- ----------------------- -------------------- */
-$("#formSubmit").click(function() {
+$("#contactForm").submit(function(e) {
 /* PROGRAMMER: Frederick Wachter - wachterfreddy@gmail.com
    DATE CREATED: 2016-06-19
    PURPOSE: Run function to clear form
 */
+	alert("submitted");
+	e.preventDefault();
 	$.ajax({
-	    url: "https://formspree.io/you@email.com", 
+	    url: "//formspree.io/f.wachter@hotmail.com", 
 	    method: "POST",
-	    data: {name: $("#userName").val(), email: $("#userEmail").val()},
+	    data: $(this).serialize(),
 	    dataType: "json"
 	});
-	
+
 	setTimeout(function() {
 		clearForm();
 	}, 2000);

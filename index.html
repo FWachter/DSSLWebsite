@@ -447,12 +447,14 @@ Things to do:
 					<p class="title">Contact Us</p>
 					<p id="contactUsText" class="sectionText">If you would like to contact us, please fill out the form below 
 						and we will respond as soon as possible.<p>
-					<form>
-					    <input id="userName" placeholder="Name" type="text" name="name"/>
-					    <input id="userEmail" placeholder="Email" type="email" name="_replyto"/>
-					    <input type="hidden" name="_cc" value="wachterfreddy@gmail.com"/>
-					    <input type="hidden" name="_subject" value="DSSL Contact Request"/>
-					    <input id="formSubmit" class="icon" type="submit" value="Send"/>
+					<form id="#contactForm">
+					    <input id="userName" placeholder="Name" type="text" name="name" required>
+					    <input id="userEmail" placeholder="Email" type="email" name="_replyto" required>
+					    <!-- Configureations -->
+					    <input type="hidden" name="_cc" value="wachterfreddy@gmail.com">
+					    <input type="hidden" name="_subject" value="DSSL Contact Request">
+						<!-- Submission -->
+					    <input id="formSubmit" class="icon" type="submit" value="Send">
 					</form>
 					<div class="contact">
 						<p class="contactUsName">Dr. Ajmal Yousuff</p>
