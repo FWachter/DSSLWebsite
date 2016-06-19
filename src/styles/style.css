@@ -697,33 +697,3 @@ input:focus {
 	width:250px;
 	border-color:white;
 }
-
-/*input, textarea {
-    margin:5px 0px 0px 0px;
-    padding:5px;
-    width:60%;
-	border:none;
-	display:block;
-	font-size:16px;
-	font-family:helvetica;
-	-webkit-box-shadow:inset 0px 0px 2px #0A0A0A;
-	-moz-box-shadow:inset 0px 0px 2px #0A0A0A;
-	-o-box-shadow:inset 0px 0px 2px #0A0A0A;
-	box-shadow:inset 0px 0px 2px #0A0A0A;
-}
-input {
-	height:25px;
-    max-width:600px;
-}
-textarea {
-	height:100px;
-    max-width:600px;
-}
-#submitButton {
-	padding:0px;
-	height:35px;
-	color:gray;
-	border:10px solid white;
-	font-size:16px;
-	background-color:white;
-}*/
