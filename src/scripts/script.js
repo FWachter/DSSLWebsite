@@ -286,7 +286,7 @@ $("#contactUs").submit(function(e) {
 	$.ajax({
 	    url: "https://formspree.io/f.wachter@hotmail.com", 
 	    method: "POST",
-	    data: {message: "Name: " + $("#userName").val() + ", Email: " + $("#userEmail").val()},
+	    data: {name: $("#userName").val(), _replyto: $("#userEmail").val()},
 	    dataType: "json"
 	});
 
