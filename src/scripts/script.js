@@ -282,6 +282,13 @@ $("#formSubmit").click(function() {
    DATE CREATED: 2016-06-19
    PURPOSE: Run function to clear form
 */
+	$.ajax({
+	    url: "https://formspree.io/you@email.com", 
+	    method: "POST",
+	    data: {name: $("#userName").val(), email: $("#userEmail").val()},
+	    dataType: "json"
+	});
+	
 	setTimeout(function() {
 		clearForm();
 	}, 2000);
