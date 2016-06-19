@@ -282,7 +282,9 @@ $("#formSubmit").click(function() {
    DATE CREATED: 2016-06-19
    PURPOSE: Run function to clear form
 */
-	clearForm();
+	setTimeout(function() {
+		clearForm();
+	}, 2000);
 });
 
 function clearForm() {
