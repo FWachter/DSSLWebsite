@@ -277,15 +277,14 @@ $("#reset").click(function() {
 /* -------------------- ----------------------- -------------------- */
 /* -------------------- Contact Form Submission -------------------- */
 /* -------------------- ----------------------- -------------------- */
-$("#contactForm").submit(function(e) {
+$("#contactUs").submit(function(e) {
 /* PROGRAMMER: Frederick Wachter - wachterfreddy@gmail.com
    DATE CREATED: 2016-06-19
    PURPOSE: Run function to clear form
 */
-	alert("submitted");
 	e.preventDefault();
 	$.ajax({
-	    url: "//formspree.io/f.wachter@hotmail.com", 
+	    url: "https://formspree.io/f.wachter@hotmail.com", 
 	    method: "POST",
 	    data: $(this).serialize(),
 	    dataType: "json"
@@ -293,7 +292,7 @@ $("#contactForm").submit(function(e) {
 
 	setTimeout(function() {
 		clearForm();
-	}, 2000);
+	}, 1000);
 });
 
 function clearForm() {
