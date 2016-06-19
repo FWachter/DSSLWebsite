@@ -71,7 +71,26 @@ CONTACT INFO: wachterfreddy@gmail.com
 	content: "\f1f9";
 	font-style:normal;
 }
-
+.icon-desktop:before {
+	position:relative;
+	top:-5px;
+	margin-left:4px;
+	font-family:FontAwesome;
+	content: "\f108";
+	font-style:normal;
+	font-size:30px;
+	color:rgb(225,225,224);
+}
+.icon-youtube:before {
+	position:relative;
+	top:-5px;
+	margin-left:4px;
+	font-family:FontAwesome;
+	content: "\f167";
+	font-style:normal;
+	font-size:30px;
+	color:rgb(225,225,224);
+}
 /* -------------------- --------- -------------------- */
 /* -------------------- Reset CSS -------------------- */	
 /* -------------------- --------- -------------------- */
@@ -119,6 +138,15 @@ a {
 	height:24px;
 	width:24px;
 	border-radius:12px;
+}
+.justify {
+	text-align:justify;
+}
+.boxshadow {
+	-webkit-box-shadow:0px 0px 10px #0A0A0A;
+	-moz-box-shadow:0px 0px 10px #0A0A0A;
+	-o-box-shadow:0px 0px 10px #0A0A0A;
+	box-shadow:0px 0px 10px #0A0A0A;
 }
 
 /* -------------------- --------------- -------------------- */
@@ -261,6 +289,17 @@ a {
 	-webkit-transition:left 1s;
 	transition:left 1s;
 }
+.sectionText {
+	margin:20px auto;
+	max-width:780px;
+	color:white;
+	font-size:20px;
+	text-align:center;
+}
+.sectionTextEmphasis {
+	color:rgb(255,198,0);
+	text-align:center;
+}
 .title {
 	margin:5px 30px;
 	font-size:50px;
@@ -278,7 +317,6 @@ a {
 	width:450px;
 	border:1px solid black;
 	background-color:none;
-	cursor:pointer;
 	background-color:rgba(35,35,35,0.95);
 }
 .projectImage {
@@ -287,7 +325,17 @@ a {
 	height:250px;
 	width:442px;
 	border:1px solid black;
+	text-align:center;
 	background-color:rgba(225,225,224,0.9);
+}
+.projectDescription {
+	position:absolute;
+	margin:12px 15px;
+	width:420px;
+	font-size:20px;
+	color:white;
+	text-align:justify;
+	opacity:0;
 }
 .projectUpdate {
 	position:absolute;
@@ -299,10 +347,17 @@ a {
 	color:rgb(35,35,35);
 }
 .projectTitle {
-	top:5px;
 	position:relative;
+	top:5px;
 	font-size:28px;
 	color:rgba(225,225,224,0.9);
+}
+.projectLinks {
+	position:absolute;
+	bottom:-18px;
+	height:50px;
+	width:450px;
+	opacity:0;
 }
 .project:hover {
 	background-color:rgba(51,51,51,0.8);
@@ -315,7 +370,16 @@ a {
 .project:hover .projectUpdate p {
 	opacity:0;
 }
-.bottomSpacer {
+.project:hover .projectDescription {
+	opacity:1;
+}
+.project:hover .projectTitle {
+	opacity:0;
+}
+.project:hover .projectLinks {
+	opacity:1;
+}
+.spacer {
 	width:100%;
 	height:15px;
 }
@@ -404,7 +468,10 @@ a {
 }
 #directorText {
 	margin-top:15px;
+	margin-left:66px;
+	width:88px;
 	font-size:25px;
+	border:1px solid white;
 }
 #directorSpacer {
 	height:30px;
@@ -547,12 +614,91 @@ a {
 /* -------------------- ---- -------------------- */
 /* -------------------- Form -------------------- */
 /* -------------------- ---- -------------------- */
-#form {
-    margin:100px auto 0px auto;
-    max-width:600px;
+form {
+    margin:10px auto 50px auto;
+    max-width:308px;
     text-align:center;
 }
-input, textarea {
+input {
+	float:none;
+	margin:5px; auto;
+	padding:4px;
+	width:100%;
+	max-width:300px;
+	border:none;
+	border-radius:2px;
+	font-size:18px;
+	color:rgb(7,41,77);
+	background-color:white;
+}
+input:focus {
+	outline:none;
+}
+#userName, #userEmail {
+	-webkit-box-shadow:inset 0px 0px 4px #0A0A0A;
+	-moz-box-shadow:inset 0px 0px 4px #0A0A0A;
+	-o-box-shadow:inset 0px 0px 4px #0A0A0A;
+	box-shadow:inset 0px 0px 4px #0A0A0A;
+}
+#formSubmit {
+	max-width:308px;
+	-webkit-box-shadow:0px 5px 10px #0A0A0A;
+	-moz-box-shadow:0px 5px 10px #0A0A0A;
+	-o-box-shadow:0px 5px 10px #0A0A0A;
+	box-shadow:0px 5px 10px #0A0A0A;
+}
+#formSubmit:hover {
+	-webkit-box-shadow:inset 0px 0px 5px #0A0A0A;
+	-moz-box-shadow:inset 0px 0px 5px #0A0A0A;
+	-o-box-shadow:inset 0px 0px 5px #0A0A0A;
+	box-shadow:inset 0px 0px 5px #0A0A0A;
+}
+#contactUsText {
+	max-width:500px;
+}
+
+.contact {
+	margin-top:30px;
+}
+#contactUsIcons {
+	margin-top: 10px;
+	text-align:center;
+}
+#contactUsIcons a {
+	margin:0px 100px;
+}
+#contactUsIconText {
+	height:72px;
+	text-align:center;
+	color:white;
+}
+#contactUsIconText p {
+	width:150px;
+}
+#contactUsIconText div {
+	vertical-align:top;
+	height:72px;
+	width:238px;
+	display:inline-block;
+}
+.contactUsName {
+	color:rgb(255,198,0);
+	font-size:36px;
+}
+.contactUsPosition {
+	color:white;
+	font-size:14px;
+}
+#advisorHR {
+	width:680px;
+	border-color:white;
+}
+#managerHR {
+	width:250px;
+	border-color:white;
+}
+
+/*input, textarea {
     margin:5px 0px 0px 0px;
     padding:5px;
     width:60%;
@@ -580,4 +726,4 @@ textarea {
 	border:10px solid white;
 	font-size:16px;
 	background-color:white;
-}
+}*/
