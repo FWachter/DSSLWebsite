@@ -91,6 +91,16 @@ CONTACT INFO: wachterfreddy@gmail.com
 	font-size:30px;
 	color:rgb(225,225,224);
 }
+.icon-home:before {
+	position:relative;
+	top:-5px;
+	margin-left:4px;
+	font-family:FontAwesome;
+	content: "\f015";
+	font-style:normal;
+	font-size:30px;
+	color:rgb(225,225,224);
+}
 /* -------------------- --------- -------------------- */
 /* -------------------- Reset CSS -------------------- */	
 /* -------------------- --------- -------------------- */
@@ -399,13 +409,13 @@ a {
 #design_GAVN {
 	background:#0A0A0A url("img/SeniorDesign/GAVN/images/projectImage.png") no-repeat center center;
 }
-#design_Origami {
-	background:#0A0A0A url("img/SeniorDesign/Origami/images/projectImage.png") no-repeat center center;
+#design_SUNBIRD {
+	background:#0A0A0A url("img/SeniorDesign/SUNBIRD/images/projectImage.png") no-repeat center center;
 }
 #design_MAPS {
 	background:#0A0A0A url("img/SeniorDesign/MAPS/images/projectImage.jpg") no-repeat center center;
 }
-#project_Hyperloop, #project_RASCAL, #project_FEEP, #design_GAVN, #design_Origami, #design_MAPS {
+#project_Hyperloop, #project_RASCAL, #project_FEEP, #design_GAVN, #design_SUNBIRD, #design_MAPS {
 	position:absolute;
 	top:0px;
 	left:0px;
