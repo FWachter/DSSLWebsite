@@ -354,7 +354,7 @@ a {
 	text-align:center;
 }
 .projectUpdate p {
-	color:rgb(35,35,35);
+	color:white;
 }
 .projectTitle {
 	position:relative;
@@ -406,6 +406,21 @@ a {
 #project_FEEP {
 	background:#0A0A0A url("img/Projects/FEEP/images/projectImage.png") no-repeat center center;
 }
+#project_HAB {
+	background:#0A0A0A url("img/Projects/HAB/images/projectImage.jpg") no-repeat center center;
+}
+#project_DragonSat1 {
+	background:#0A0A0A url("img/Projects/DragonSat1/images/projectImage.jpg") no-repeat center center;
+}
+#project_RockSatC {
+	background:#0A0A0A url("img/Projects/RockSatC/images/projectImage.jpg") no-repeat center center;
+}
+#project_Microgravity {
+	background:#0A0A0A url("img/Projects/Microgravity/images/projectImage.png") no-repeat center center;
+}
+#design_AeroSAE {
+	background:#0A0A0A url("img/SeniorDesign/AeroSAE/images/projectImage.png") no-repeat center center;
+}
 #design_GAVN {
 	background:#0A0A0A url("img/SeniorDesign/GAVN/images/projectImage.png") no-repeat center center;
 }
@@ -415,7 +430,7 @@ a {
 #design_MAPS {
 	background:#0A0A0A url("img/SeniorDesign/MAPS/images/projectImage.jpg") no-repeat center center;
 }
-#project_Hyperloop, #project_RASCAL, #project_FEEP, #design_GAVN, #design_SUNBIRD, #design_MAPS {
+#project_Hyperloop, #project_RASCAL, #project_FEEP, #project_HAB, #project_DragonSat1, #project_RockSatC, #project_Microgravity, #design_AeroSAE, #design_GAVN, #design_SUNBIRD, #design_MAPS {
 	position:absolute;
 	top:0px;
 	left:0px;
@@ -610,10 +625,13 @@ a {
 	background-size:cover;
 }
 
+#alumni_Bournelis {
+	background:#0A0A0A url("img/Alumni/Bournelis.png") no-repeat center center;
+}
 #alumni_Daily {
 	background:#0A0A0A url("img/Alumni/Daily.jpg") no-repeat center center;
 }
-#alumni_Daily {
+#alumni_Bournelis, #alumni_Daily {
 	position:absolute;
 	top:0px;
 	height:100%;
