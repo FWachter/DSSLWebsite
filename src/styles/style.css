@@ -418,6 +418,15 @@ a {
 #project_Microgravity {
 	background:#0A0A0A url("img/Projects/Microgravity/images/projectImage.png") no-repeat center center;
 }
+#project_Hyperloop, #project_RASCAL, #project_FEEP, #project_HAB, #project_DragonSat1, #project_RockSatC, #project_Microgravity {
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+	background-size:cover;
+}
+
 #design_AeroSAE {
 	background:#0A0A0A url("img/SeniorDesign/AeroSAE/images/projectImage.png") no-repeat center center;
 }
@@ -430,7 +439,10 @@ a {
 #design_MAPS {
 	background:#0A0A0A url("img/SeniorDesign/MAPS/images/projectImage.jpg") no-repeat center center;
 }
-#project_Hyperloop, #project_RASCAL, #project_FEEP, #project_HAB, #project_DragonSat1, #project_RockSatC, #project_Microgravity, #design_AeroSAE, #design_GAVN, #design_SUNBIRD, #design_MAPS {
+#design_COIL {
+	background:#0A0A0A url("img/SeniorDesign/COIL/images/projectImage.png") no-repeat center center;
+}
+#design_AeroSAE, #design_GAVN, #design_SUNBIRD, #design_MAPS, #design_COIL {
 	position:absolute;
 	top:0px;
 	left:0px;
