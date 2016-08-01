@@ -442,7 +442,10 @@ a {
 #design_COIL {
 	background:#0A0A0A url("img/SeniorDesign/COIL/images/projectImage.png") no-repeat center center;
 }
-#design_AeroSAE, #design_GAVN, #design_SUNBIRD, #design_MAPS, #design_COIL {
+#design_LOTUS {
+	background:#0A0A0A url("img/SeniorDesign/LOTUS/images/projectImage.jpg") no-repeat center center;
+}
+#design_AeroSAE, #design_GAVN, #design_SUNBIRD, #design_MAPS, #design_COIL, #design_LOTUS {
 	position:absolute;
 	top:0px;
 	left:0px;
