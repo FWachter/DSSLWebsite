@@ -630,13 +630,10 @@ a {
 #student_Wachter {
 	background:#0A0A0A url("img/Students/Wachter.jpg") no-repeat center center;
 }
-#student_Turchi {
-	background:#0A0A0A url("img/Students/Turchi.jpg") no-repeat center center;
+#student_Alessi {
+	background:#0A0A0A url("img/Students/Alessi.jpg") no-repeat center center;
 }
-#student_Katz {
-	background:#0A0A0A url("img/NoPicture.jpg") no-repeat center center;
-}
-#student_Ireland, #student_Wachter, #student_Turchi, #student_Katz {
+#student_Ireland, #student_Wachter, #student_Alessi {
 	position:absolute;
 	top:0px;
 	height:100%;
@@ -650,7 +647,13 @@ a {
 #alumni_Daily {
 	background:#0A0A0A url("img/Alumni/Daily.jpg") no-repeat center center;
 }
-#alumni_Bournelis, #alumni_Daily {
+#alumni_Turchi {
+	background:#0A0A0A url("img/Alumni/Turchi.jpg") no-repeat center center;
+}
+#alumni_Katz {
+	background:#0A0A0A url("img/NoPicture.jpg") no-repeat center center;
+}
+#alumni_Bournelis, #alumni_Daily, #alumni_Turchi, #alumni_Katz {
 	position:absolute;
 	top:0px;
 	height:100%;
