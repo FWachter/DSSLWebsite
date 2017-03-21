@@ -1,3 +1,10 @@
+/*
+PROGRAMMER: Frederick Wachter
+DATE CREATED: 2016-04-27
+PURPOSE: Official website of the Drexel Space Systems Laboratory
+CONTACT INFO: wachterfreddy@gmail.com
+*/
+
 /* -------------------- --------- -------------------- */
 /* -------------------- Variables -------------------- */
 /* -------------------- --------- -------------------- */
@@ -15,27 +22,24 @@ $(window).resize(function() {
 	windowResize();
 });
 function windowResize() {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   PURPOSE: Resize document properties with window is resize
+   MAJOR CHANGES: 2016-05-21 | Add in the setHighlightedSection function and removed reset of '#selected' position
+                  2016-05-31 | Removed scaling of project divs
+*/
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
-	var leftPosition = $(".sectionTitle").eq(index).offset().left;
 
 	offsetSections(index,windowWidth); // Update offset of sections
+	setHighlightedSection();
 
 	$("#intro").css({height:$(window).height()});
 	$("#sections").css({
 		"height":(windowHeight) + "px"
-	});$("#selected").css({
-		"left":leftPosition
 	});
 	$(".section").css({
 		"height":(windowHeight - 120) + "px"
-	});
-	$(".project").css({
-		"height":((windowHeight - 210) / 2) - 10 + "px",
-		"width":((windowWidth - 40) / 2) - 18 + "px"
-	});
-	$(".projectInfo").css({
- 		"height":((windowHeight - 210) / 2) - 60 + "px"
 	});
 
 	if (sectionFlag == 1) {
@@ -49,10 +53,14 @@ function windowResize() {
 	}
 }
 
-/* -------------------- -------------- -------------------- */
-/* -------------------- Section Offset -------------------- */			
-/* -------------------- -------------- -------------------- */
+/* -------------------- --------- -------------------- */
+/* -------------------- Functions -------------------- */			
+/* -------------------- --------- -------------------- */
 function offsetSections(index,windowWidth) {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   PURPOSE: Offset section pages
+*/
 	var offset = (-index) * windowWidth;
 	for (var i = 0; i < totalSections; i++) {
 		$(".section").eq(i).css({
@@ -60,13 +68,68 @@ function offsetSections(index,windowWidth) {
 		});
 	}
 }
+function setHighlightedSection() {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   PURPOSE: Set the position of the section title highlighter
+   MAJOR CHANGES: 2016-05-21 | Changed (previousIndex == index) if statement to not do anything instead of reset
+*/
+   	if (sectionFlag == 1) {
+		var windowWidth  = $(window).width();
+		var leftPosition = $(".sectionTitle").eq(index).offset().left;
+		var titleWidth   = $(".sectionTitle").eq(index).width() + 20;
+		var offset       = (-index) * windowWidth;
+		if (screenFlag == 0) { // If no sections are showing
+			screenFlag = 1;
+			offsetSections(index,windowWidth); // Update offset of sections
+			$(".sectionTitle").eq(index).css({
+				"color":"black"
+			});
+			$("#selected").css({
+				"left":leftPosition,
+				"width":titleWidth,
+				"opacity":"1"
+			});
+			$("#menubar").css({
+				"background":"rgba(25,25,25,0.95)"
+			});
+			previousIndex = index;
+		} else {
+			if (previousIndex == index) { // If the current section button has been clicked again or window resize
+				$("#selected").css({
+					"left":leftPosition
+				});
+			} else { // If a section is showing and a new menu button has been clicked
+				offsetSections(index,windowWidth); // Update offset of sections
+				$(".sectionTitle").eq(previousIndex).css({
+					"color":""
+				});
+				$(".sectionTitle").eq(index).css({
+					"color":"black"
+				});
+				$("#selected").css({
+					"left":leftPosition,
+					"width":titleWidth
+				});
+				previousIndex = index;
+			}
+		}
+	}
+}
 
-/* -------------------- ------------------ -------------------- */
-/* -------------------- Menu Item Selector -------------------- */
-/* -------------------- ------------------ -------------------- */
+/* -------------------- ----------------- -------------------- */
+/* -------------------- Element Functions -------------------- */
+/* -------------------- ----------------- -------------------- */
 $(".sectionTitle").click(function() {
-	if (sectionFlag == 0) {
-		sectionFlag = 1;
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   PURPOSE: Bring up section pages when the section title is clicked and change current page
+   MAJOR CHANGES: 2016-05-21 | Removed parts and added to setHighlightedSection to allow for window resize trigger
+*/
+	index = $(this).index() - 1; // get the section that was clicked
+
+	if (sectionFlag == 0) { // if there isn't any pages showing
+		sectionFlag = 1; // set the flag to indicate that a page is now showing
 		var windowHeight = $(window).height();
 		
 		$("#menubar").css({
@@ -86,65 +149,104 @@ $(".sectionTitle").click(function() {
 			"opacity":"0"
 		});
 	}
-	/* HINT: Index starts from 0 */
-	index = $(this).index() - 1;
-	var windowWidth  = $(window).width();
-	var leftPosition = $(".sectionTitle").eq(index).offset().left;
-	var titleWidth   = $(".sectionTitle").eq(index).width() + 20;
-	var offset       = (-index) * windowWidth;
-	if (screenFlag == 0) { // If no sections are showing
-		screenFlag = 1;
-		offsetSections(index,windowWidth); // Update offset of sections
-		$(".sectionTitle").eq(index).css({
-			"color":"black"
-		});
-		$("#selected").css({
-			"left":leftPosition,
-			"width":titleWidth,
+
+	setHighlightedSection(); // update the position of the section hightlighter
+});
+
+$(".icon-phone").hover(
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-31
+   PURPOSE: Trigger phone number for hovered member to appear
+*/
+	function() {
+		var index = $(".icon-phone").index(this);
+		$(".memberPhone").eq(index).css({
+			"margin-top":"301px",
 			"opacity":"1"
 		});
-		previousIndex = index;
-	} else {
-		if (previousIndex == index) { // If the current section button has been clicked again
-			$(".sectionTitle").eq(index).css({
-				"color":""
-			});
-			$("#selected").css({
-				"left":"",
-				"width":"",
-				"opacity":"1"
-			});
-			index = -1; // Reset the menu button index indicator
-			offsetSections(index,windowWidth); // Update offset of sections
-			screenFlag = 0; // Reset the current section indicator
-			previousIndex = -1; // Reset the previous index indicator
-		} else { // If a section is showing and a new menu button has been clicked
-			offsetSections(index,windowWidth); // Update offset of sections
-			$(".sectionTitle").eq(previousIndex).css({
-				"color":""
-			});
-			$(".sectionTitle").eq(index).css({
-				"color":"black"
-			});
-			$("#selected").css({
-				"left":leftPosition,
-				"width":titleWidth
-			});
-			previousIndex = index;
-		}
+	}, function() {
+		var index = $(".icon-phone").index(this);
+		$(".memberPhone").eq(index).css({
+			"margin-top":"",
+			"opacity":""
+		});
 	}
-});
+);
+$(".memberPhone").hover(
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-06-05
+   PURPOSE: Trigger phone number for hovered member to appear
+*/
+	function() {
+		var index = $(".memberPhone").index(this);
+		$(".memberPhone").eq(index).css({
+			"margin-top":"301px",
+			"opacity":"1"
+		});
+	}, function() {
+		var index = $(".memberPhone").index(this);
+		$(".memberPhone").eq(index).css({
+			"margin-top":"",
+			"opacity":""
+		});
+	}
+);
+
+$(".icon-email").hover(
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-31
+   PURPOSE: Trigger email for hovered member to appear
+*/
+	function() {
+		var index = $(".icon-email").index(this);
+		$(".memberEmail").eq(index).css({
+			"margin-top":"301px",
+			"opacity":"1"
+		});
+	}, function() {
+		var index = $(".icon-email").index(this);
+		$(".memberEmail").eq(index).css({
+			"margin-top":"",
+			"opacity":""
+		});
+	}
+);
+$(".memberEmail").hover(
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-06-05
+   PURPOSE: Trigger phone number for hovered member to appear
+*/
+	function() {
+		var index = $(".memberEmail").index(this);
+		$(".memberEmail").eq(index).css({
+			"margin-top":"301px",
+			"opacity":"1"
+		});
+	}, function() {
+		var index = $(".memberEmail").index(this);
+		$(".memberEmail").eq(index).css({
+			"margin-top":"",
+			"opacity":""
+		});
+	}
+);
 
 /* -------------------- ------------ -------------------- */
 /* -------------------- Reset Screen -------------------- */
 /* -------------------- ------------ -------------------- */
 $("#reset").click(function() {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   PURPOSE: Reset the screen back to the homepage
+*/
+	screenFlag = 0;
 	sectionFlag = 0;
 	var windowHeight = $(window).height();
 	var windowWidth = $(window).width();
 	
 	$("#menubar").css({
-		"top":""
+		"top":"",
+		"background":""
 	});
 	$("#reset").css({
 		"bottom":""
@@ -167,133 +269,53 @@ $("#reset").click(function() {
 		"width":"",
 		"opacity":""
 	});
+
 	index = -1; // Reset the menu button index indicator
 	offsetSections(index);
-	screenFlag = 0;
 });
 
 /* -------------------- ----------------------- -------------------- */
 /* -------------------- Contact Form Submission -------------------- */
 /* -------------------- ----------------------- -------------------- */
-$("#contactForm").submit(function(event) {
-	var errorMessage = "";
-	event.preventDefault(); // Stops URL form update
-
-	if ($("#name").val() == "") {
-		errorMessage = "Please enter your name.";
-	}
-	if (!isValidEmailAddress($("#email").val())) {
-		if (errorMessage == "") {
-			errorMessage = "Please enter a valid email address.";
-		} else {
-			errorMessage = errorMessage + "<br/>Please enter a valid email address.";
-		}
-	}
-	if (!$.isNumeric($("#phone").val()) && $("#phone").val() != "") {
-		if (errorMessage == "") {
-			errorMessage = "Please enter a valid phone number.";
-		} else {
-			errorMessage = errorMessage + "<br/>Please enter a valid phone number.";
-		}
-	}
-	if ($("#contactRequest").val() == "") {
-		if (errorMessage == "") {
-			errorMessage = "Please enter a message.";
-		} else {
-			errorMessage = errorMessage + "<br/>Please enter a message.";
-		}
-	}
-
-	if (errorMessage == "") {
-		sendMail();
-		clearForm();
-		alert("Contact Request Submitted!");
-	} else {
-		$("#error").html(errorMessage);
-	}
-})
-function sendMail() {
+$("#contactUs").submit(function(e) {
+/* PROGRAMMER: Frederick Wachter - wachterfreddy@gmail.com
+   DATE CREATED: 2016-06-19
+   PURPOSE: Run function to clear form
+*/
+	e.preventDefault();
 	$.ajax({
-		url: "https://mandrillapp.com/api/1.0/messages/send.json",
-		type: "POST",
-		dataType: 'json',
-		data: {
-			'key': 'CvhTgajhxOvroFDzWKu9Jw',
-			'message': {
-				'from_email': $("#email").val(),
-				'to': [{
-					'email': 'f.wachter@hotmail.com',
-					'name': $("#name").val(),
-					'type': 'to'
-				}],
-				'autotext': 'true',
-				'subject': 'DSSL Contact Request',
-				'html': generateResponse()
-			}
-		}
-	}); //.done(function(response) {
-	//	console.log(response);
-	//});
-}
-function generateResponse() {
-	var response = '';
-	response = 'Name: ' + $("#name").val() + '<br/>';
-	response = response + 'Email: ' + $("#email").val() + '<br/>';
-	if ($("#phone").val() == "") {
-		response = response + 'Phone Number: Phone number not given' + '<br/>';
-	} else {
-		response = response + 'Phone Number: ' + $("#phone").val() + '<br/>';
-	}
-	response = response + 'Date: ' + currentDate() + '<br/>';
-	response = response + 'Time: ' + currentTime() + '<br/><br/>';
-	response = response + 'Message: <br/>' + $("#contactRequest").val();
-	return response;
-}
-function currentDate() {
-	var currentDate = new Date;
-	var Day = currentDate.getDate();
-	if (Day < 10) {
-		Day = '0' + Day;
-	}
-	var Month = currentDate.getMonth() + 1;
-	if (Month < 10) {
-		Month = '0' + Month;
-	}
-	var Year = currentDate.getFullYear();
-	var fullDate = Month + '/' + Day + '/' + Year;
-	return fullDate;
-}
-function currentTime() {
-	var currentTime = new Date;
-	var Minutes = currentTime.getMinutes();
-	if (Minutes < 10) {
-		Minutes = '0' + Minutes;
-	}
-	var Hour = currentTime.getHours();
-	if (Hour > 12) {
-		Hour -= 12;
-	}
-	var Time = Hour + ':' + Minutes;
-	if (currentTime.getHours() <= 12) {
-		Time += ' AM';
-	}
-	if (currentTime.getHours() > 12) {
-		Time += ' PM';
-	}
-	return Time;
-}
+	    url: "https://formspree.io/wachterfreddy@gmail.com", 
+	    method: "POST",
+	    data: {name: $("#userName").val(), _replyto: $("#userEmail").val()},
+	    dataType: "json"
+	});
+
+	setTimeout(function() {
+		clearForm();
+	}, 1000);
+});
+
 function clearForm() {
+/* PROGRAMMER: Frederick Wachter
+   DATE CREATED: 2016-05-02
+   PURPOSE: Clear the form
+*/
 	var elems = document.getElementsByTagName("input");
 	var l = elems.length - 1;
 	for (var i = 0; i < l; ++i) {
 		elems[i].value = "";
 	}
-
-	elems = document.getElementsByTagName("textarea");
-	var l = elems.length;
-	for (var i = 0; i < l; ++i) {
-		elems[i].value = "";
-	}
-
-	$("#error").html("");
 }
+
+/* -------------------- ---------------- -------------------- */
+/* -------------------- Google Analytics -------------------- */
+/* -------------------- ---------------- -------------------- */
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-66023611-1', 'auto');
+ga('send', 'pageview');
+
+

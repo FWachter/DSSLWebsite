@@ -1,3 +1,10 @@
+/*
+PROGRAMMER: Frederick Wachter
+DATE CREATED: 2016-04-27
+PURPOSE: Official website of the Drexel Space Systems Laboratory
+CONTACT INFO: wachterfreddy@gmail.com
+*/
+
 /* -------------------- ----- -------------------- */
 /* -------------------- Fonts -------------------- */		
 /* -------------------- ----- -------------------- */
@@ -13,7 +20,87 @@
 	font-family:HelveticaNeue-Light;
 	src: url("font/HelveticaNeue-Light.otf") format("opentype");
 }
+@font-face {
+	font-family:FontAwesome;
+	src: url('font/fontawesome-webfont.eot');
+	src: url('font/fontawesome-webfont.eot?#iefix') format('embedded-opentype'), 
+		 url('font/fontawesome-webfont.woff') format('woff'), 
+		 url('font/fontawesome-webfont.ttf') format('truetype'),
+		 url('font/fontawesome-webfont.svg') format('svg');
+	font-weight:normal;
+	font-style:normal;
+}
 
+.icon-phone:before {
+	position:relative;
+	top:-3px;
+	margin-left:2px;
+	font-family:FontAwesome;
+	content: "\f095";
+	font-style:normal;
+	font-size:37px;
+	color:rgb(225,225,224);
+}
+.icon-email:before {
+	position:relative;
+	top:-6px;
+	margin-left:4px;
+	font-family:FontAwesome;
+	content: "\f003";
+	font-style:normal;
+	font-size:37px;
+	color:rgb(225,225,224);
+}
+.icon-office:before {
+	position:relative;
+	top:-7.5px;
+	margin-left:7px;
+	font-family:FontAwesome;
+	content: "\f0f7";
+	font-style:normal;
+	font-size:30px;
+	color:rgb(225,225,224);
+}
+.icon-marker:before {
+	font-family:FontAwesome;
+	content: "\f041";
+	font-style:normal;
+}
+.icon-copyright:before {
+	font-family:FontAwesome;
+	content: "\f1f9";
+	font-style:normal;
+}
+.icon-desktop:before {
+	position:relative;
+	top:-5px;
+	margin-left:4px;
+	font-family:FontAwesome;
+	content: "\f108";
+	font-style:normal;
+	font-size:30px;
+	color:rgb(225,225,224);
+}
+.icon-youtube:before {
+	position:relative;
+	top:-5px;
+	margin-left:4px;
+	font-family:FontAwesome;
+	content: "\f167";
+	font-style:normal;
+	font-size:30px;
+	color:rgb(225,225,224);
+}
+.icon-home:before {
+	position:relative;
+	top:-5px;
+	margin-left:4px;
+	font-family:FontAwesome;
+	content: "\f015";
+	font-style:normal;
+	font-size:30px;
+	color:rgb(225,225,224);
+}
 /* -------------------- --------- -------------------- */
 /* -------------------- Reset CSS -------------------- */	
 /* -------------------- --------- -------------------- */
@@ -42,6 +129,13 @@ section {
 h1 {
 	font-size:30px;
 }
+a {
+	text-decoration:none;
+}
+
+/* -------------------- --------------- -------------------- */
+/* -------------------- General Classes -------------------- */
+/* -------------------- --------------- -------------------- */
 .icon:hover {
 	opacity:0.8;
 	cursor:pointer;
@@ -58,6 +152,15 @@ h1 {
 	height:24px;
 	width:24px;
 	border-radius:12px;
+}
+.justify {
+	text-align:justify;
+}
+.boxshadow {
+	-webkit-box-shadow:0px 0px 10px #0A0A0A;
+	-moz-box-shadow:0px 0px 10px #0A0A0A;
+	-o-box-shadow:0px 0px 10px #0A0A0A;
+	box-shadow:0px 0px 10px #0A0A0A;
 }
 
 /* -------------------- --------------- -------------------- */
@@ -117,8 +220,10 @@ h1 {
 	width:100%;
 	font-size:25px;
 	text-align:center;
-	-webkit-transition:top 1.5s;
-	transition:top 1.5s;
+	border-top:1px solid rgb(232,232,232);
+	background:rgba(51,51,51,0);
+	-webkit-transition:top 1.5s, background 1.5s;
+	transition:top 1.5s, background 1.5s;
 }
 #selected {
 	position:absolute;
@@ -155,16 +260,18 @@ h1 {
 /* -------------------- ----- -------------------- */
 #reset {
 	position:absolute;
-	bottom:-50px;
+	bottom:-51px;
 	height:50px;
 	width:100%;
-	background-color:rgba(150,150,150,0.7);
+	border-top:1px solid white;
+	background:-webkit-linear-gradient(141deg,rgb(230,178,0) 0%,rgb(255,198,0) 50%,rgb(255,204,26) 100%);
+	background:linear-gradient(141deg,rgb(230,178,0) 0%,rgb(255,198,0) 50%,rgb(255,204,26) 100%);
+	/*background:rgb(255,198,0);*/
 	text-align:center;
-	-webkit-transition:bottom 1.5s;
-	transition:bottom 1.5s;
+	-webkit-transition:bottom 1.5s, background 1.0s;
+	transition:bottom 1.5s, background 1.0s;
 }
 #reset:hover {
-	background-color:rgba(150,150,150,0.9);
 	cursor:pointer;
 }
 #arrow {
@@ -189,91 +296,458 @@ h1 {
 	position:absolute;
 	top:0;
 	width:100%;
-	background-color:rgba(255,255,255,0.7);
+	background-color:rgba(7,41,77,0.9);
+	overflow:scroll;
 	text-align:center;
 	color:rgb(7,41,77);
 	-webkit-transition:left 1s;
 	transition:left 1s;
 }
+.sectionText {
+	margin:20px auto;
+	max-width:780px;
+	color:white;
+	font-size:20px;
+	text-align:center;
+}
+.sectionTextEmphasis {
+	color:rgb(255,198,0);
+	text-align:center;
+}
 .title {
-	margin:3px 30px 10px 30px;
+	margin:5px 30px;
 	font-size:50px;
-	text-decoration:underline;
+	color:rgb(255,198,0);
 }
 
 /* -------------------- -------- -------------------- */
 /* -------------------- Projects -------------------- */
 /* -------------------- -------- -------------------- */
-#projects {
-	font-size:0;
-}
 .project {
-	position:relative;
-	margin:0px 13px 20px 11px;
 	display:inline-block;
+	position:relative;
+	margin:10px 10px;
+	height:300px;
+	width:450px;
+	border:1px solid black;
+	background-color:none;
+	background-color:rgba(35,35,35,0.95);
+}
+.projectImage {
+	position:relative;
+	margin:3px;
+	height:250px;
+	width:442px;
+	border:1px solid black;
 	text-align:center;
+	background-color:rgba(225,225,224,0.9);
+}
+.projectDescription {
+	position:absolute;
+	margin:12px 15px;
+	width:420px;
+	font-size:20px;
 	color:white;
-	font-size:30px;
+	text-align:justify;
+	opacity:0;
 }
-.color1 {
-	background-color:rgb(7,41,77);
+.projectUpdate {
+	position:absolute;
+	top:3px;
+	width:100%;
+	text-align:center;
 }
-.color2 {
-	background-color:rgb(255,198,0);
+.projectUpdate p {
+	color:white;
 }
 .projectTitle {
-	position:absolute;
-	bottom:0;
-	height:50px;
-	width:100%;
-	background-color:gray;
-}
-.projectInfo {
-	position:absolute;
-	top:0;
-	width:100%;
-	background-color:green;
-}
-.project div p {
 	position:relative;
-	top:50%;
-	margin-top:-18px;
+	top:5px;
+	font-size:28px;
+	color:rgba(225,225,224,0.9);
+}
+.projectLinks {
+	position:absolute;
+	bottom:-18px;
+	height:50px;
+	width:450px;
+	opacity:0;
+}
+.project:hover {
+	background-color:rgba(51,51,51,0.8);
+}
+.project:hover .projectImage {
+	border:none;
+	margin:4px;
+	opacity:0.1;
+}
+.project:hover .projectUpdate p {
+	opacity:0;
+}
+.project:hover .projectDescription {
+	opacity:1;
+}
+.project:hover .projectTitle {
+	opacity:0;
+}
+.project:hover .projectLinks {
+	opacity:1;
+}
+.spacer {
+	width:100%;
+	height:15px;
+}
+
+/* -------------------- ---------------------- -------------------- */
+/* -------------------- Project/SD Backgrounds -------------------- */
+/* -------------------- ---------------------- -------------------- */
+#project_Hyperloop {
+	background:#0A0A0A url("img/Projects/Hyperloop/images/projectImage.jpg") no-repeat center center;
+}
+#project_RASCAL {
+	background:#0A0A0A url("img/Projects/RASCAL/images/projectImage.png") no-repeat center center;
+}
+#project_FEEP {
+	background:#0A0A0A url("img/Projects/FEEP/images/projectImage.png") no-repeat center center;
+}
+#project_HAB {
+	background:#0A0A0A url("img/Projects/HAB/images/projectImage.jpg") no-repeat center center;
+}
+#project_DragonSat1 {
+	background:#0A0A0A url("img/Projects/DragonSat1/images/projectImage.jpg") no-repeat center center;
+}
+#project_RockSatC {
+	background:#0A0A0A url("img/Projects/RockSatC/images/projectImage.jpg") no-repeat center center;
+}
+#project_Microgravity {
+	background:#0A0A0A url("img/Projects/Microgravity/images/projectImage.png") no-repeat center center;
+}
+#project_Hyperloop, #project_RASCAL, #project_FEEP, #project_HAB, #project_DragonSat1, #project_RockSatC, #project_Microgravity {
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+	background-size:cover;
+}
+
+#design_AeroSAE {
+	background:#0A0A0A url("img/SeniorDesign/AeroSAE/images/projectImage.png") no-repeat center center;
+}
+#design_GAVN {
+	background:#0A0A0A url("img/SeniorDesign/GAVN/images/projectImage.png") no-repeat center center;
+}
+#design_SUNBIRD {
+	background:#0A0A0A url("img/SeniorDesign/SUNBIRD/images/projectImage.png") no-repeat center center;
+}
+#design_MAPS {
+	background:#0A0A0A url("img/SeniorDesign/MAPS/images/projectImage.jpg") no-repeat center center;
+}
+#design_COIL {
+	background:#0A0A0A url("img/SeniorDesign/COIL/images/projectImage.png") no-repeat center center;
+}
+#design_LOTUS {
+	background:#0A0A0A url("img/SeniorDesign/LOTUS/images/projectImage.jpg") no-repeat center center;
+}
+#design_AeroSAE, #design_GAVN, #design_SUNBIRD, #design_MAPS, #design_COIL, #design_LOTUS {
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+	background-size:cover;
+}
+
+/* -------------------- ------- -------------------- */
+/* -------------------- Members -------------------- */
+/* -------------------- ------- -------------------- */
+.member {
+	display:inline-block;
+	position:relative;
+	margin:5px 10px 30px 10px;
+	cursor:pointer;
+}
+.memberBackground {
+	position:relative;
+	height:300px;
+	width:220px;
+	border:1px solid black;
+	background-color:rgba(35,35,35,0.95);
+	z-index:1;
+}
+.memberImage {
+	position:relative;
+	margin:3px;
+	height:250px;
+	width:212px;
+	border:1px solid black;
+	background-color:rgba(225,225,224,0.9);
+}
+.memberInfo {
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:260px;
+	width:100%;
+	color:white;
+	text-align:center;
+	opacity:0;
+	z-index:2;
+}
+.memberText {
+	font-size:18px;
+}
+.memberInfo hr {
+	margin:0px auto;
+	width:85%;
+	border-color:white;
+}
+.memberName {
+	font-size:22px;
+	font-weight:bold;
+}
+.memberDescription {
+	margin-top:5px;
+	font-size:22px;
+}
+#directorText {
+	margin-top:15px;
+	margin-left:66px;
+	width:88px;
+	font-size:25px;
+	border:1px solid white;
+}
+#directorSpacer {
+	height:30px;
+	width:100%;
+}
+.advisorSpacer {
+	height:55px;
+	width:100%;
+}
+.studentSpacer {
+	height:22px;
+	width:100%;
+}
+.iconBar {
+	position:relative;
+	margin:0px 3px 3px 3px;
+	height:37px;
+	width:212px;
+	text-align:center;
+}
+.iconImage {
+	margin-top:1px;
+	height:37px;
+}
+.memberImage p {
+	color:rgb(35,35,35);
+	font-size:20px;
+}
+.member:hover .memberBackground {
+	background-color:rgba(51,51,51,0.8);
+}
+.member:hover .memberImage {
+	border:none;
+	margin:4px;
+	opacity:0.25;
+}
+.member:hover .memberInfo {
+	opacity:1;
+}
+.member:hover .memberImage p {
+	opacity:0;
+}
+.iconBar img, .iconBar span {
+	opacity:0.5;
+}
+.member:hover .iconBar img,.member:hover .iconBar span {
+	opacity:1;
+}
+
+.icon-phone, .icon-email {
+	z-index:1;
+}
+
+.memberPhone {
+	position:absolute;
+	margin-top:270px;
+	height:30px;
+	width:220px;
+	font-size:18px;
+	color:white;
+	border:1px solid black;
+	background-color:rgba(51,51,51,0.8);
+	opacity:0;
+	-webkit-transition:margin-top 0.3s, opacity 0.3s;
+	transition:margin-top 0.3s, opacity 0.3s;
+	z-index:0;
+}
+.memberEmail {
+	position:absolute;
+	margin-top:270px;
+	height:30px;
+	width:220px;
+	font-size:18px;
+	color:white;
+	border:1px solid black;
+	background-color:rgba(51,51,51,0.8);
+	opacity:0;
+	-webkit-transition:margin-top 0.3s, opacity 0.3s;
+	transition:margin-top 0.3s, opacity 0.3s;
+	z-index:0;
+}
+.memberPhone p, .memberEmail p {
+	margin-top:4px;
+}
+
+/* -------------------- ---------------------------- -------------------- */
+/* -------------------- Advisor/Member/Alumni Images -------------------- */
+/* -------------------- ---------------------------- -------------------- */
+#advisor_Yousuff {
+	background:#0A0A0A url("img/Advisors/Yousuff.jpg") no-repeat center center;
+}
+#advisor_Swoboda {
+	background:#0A0A0A url("img/Advisors/Swoboda.png") no-repeat center center;
+}
+#advisor_Kujawski {
+	background:#0A0A0A url("img/NoPicture.jpg") no-repeat center center;
+}
+#advisor_Lamberson {
+	background:#0A0A0A url("img/Advisors/Lamberson.jpg") no-repeat center center;
+}
+#advisor_Yousuff, #advisor_Swoboda, #advisor_Kujawski, #advisor_Lamberson {
+	position:absolute;
+	top:0px;
+	height:100%;
+	width:100%;
+	background-size:cover;
+}
+
+#student_Ireland {
+	background:#0A0A0A url("img/Students/Ireland.jpg") no-repeat center center;
+}
+#student_Wachter {
+	background:#0A0A0A url("img/Students/Wachter.jpg") no-repeat center center;
+}
+#student_Alessi {
+	background:#0A0A0A url("img/Students/Alessi.jpg") no-repeat center center;
+}
+#student_Ireland, #student_Wachter, #student_Alessi {
+	position:absolute;
+	top:0px;
+	height:100%;
+	width:100%;
+	background-size:cover;
+}
+
+#alumni_Bournelis {
+	background:#0A0A0A url("img/Alumni/Bournelis.png") no-repeat center center;
+}
+#alumni_Daily {
+	background:#0A0A0A url("img/Alumni/Daily.jpg") no-repeat center center;
+}
+#alumni_Turchi {
+	background:#0A0A0A url("img/Alumni/Turchi.jpg") no-repeat center center;
+}
+#alumni_Katz {
+	background:#0A0A0A url("img/NoPicture.jpg") no-repeat center center;
+}
+#alumni_Bournelis, #alumni_Daily, #alumni_Turchi, #alumni_Katz {
+	position:absolute;
+	top:0px;
+	height:100%;
+	width:100%;
+	background-size:cover;
 }
 
 /* -------------------- ---- -------------------- */
 /* -------------------- Form -------------------- */
 /* -------------------- ---- -------------------- */
-#form {
-    margin:100px auto 0px auto;
-    max-width:600px;
+form {
+    margin:10px auto 50px auto;
+    max-width:308px;
     text-align:center;
 }
-input, textarea {
-    margin:5px 0px 0px 0px;
-    padding:5px;
-    width:60%;
-	border:none;
-	display:block;
-	font-size:16px;
-	font-family:helvetica;
-	-webkit-box-shadow:inset 0px 0px 2px #0A0A0A;
-	-moz-box-shadow:inset 0px 0px 2px #0A0A0A;
-	-o-box-shadow:inset 0px 0px 2px #0A0A0A;
-	box-shadow:inset 0px 0px 2px #0A0A0A;
-}
 input {
-	height:25px;
-    max-width:600px;
-}
-textarea {
-	height:100px;
-    max-width:600px;
-}
-#submitButton {
-	padding:0px;
-	height:35px;
-	color:gray;
-	border:10px solid white;
-	font-size:16px;
+	float:none;
+	margin:5px; auto;
+	padding:4px;
+	width:100%;
+	max-width:300px;
+	border:none;
+	border-radius:2px;
+	font-size:18px;
+	color:rgb(7,41,77);
 	background-color:white;
+}
+input:focus {
+	outline:none;
+}
+#userName, #userEmail {
+	-webkit-box-shadow:inset 0px 0px 4px #0A0A0A;
+	-moz-box-shadow:inset 0px 0px 4px #0A0A0A;
+	-o-box-shadow:inset 0px 0px 4px #0A0A0A;
+	box-shadow:inset 0px 0px 4px #0A0A0A;
+}
+#formSubmit {
+	max-width:308px;
+	-webkit-box-shadow:0px 5px 10px #0A0A0A;
+	-moz-box-shadow:0px 5px 10px #0A0A0A;
+	-o-box-shadow:0px 5px 10px #0A0A0A;
+	box-shadow:0px 5px 10px #0A0A0A;
+}
+#formSubmit:hover {
+	-webkit-box-shadow:inset 0px 0px 5px #0A0A0A;
+	-moz-box-shadow:inset 0px 0px 5px #0A0A0A;
+	-o-box-shadow:inset 0px 0px 5px #0A0A0A;
+	box-shadow:inset 0px 0px 5px #0A0A0A;
+}
+
+/* -------------------- --------------- -------------------- */
+/* -------------------- Contact Us Page -------------------- */
+/* -------------------- --------------- -------------------- */
+#contactUsText {
+	max-width:500px;
+}
+
+.contact {
+	margin-top:30px;
+}
+#contactUsIcons {
+	margin-top: 10px;
+	text-align:center;
+}
+#contactUsIcons a {
+	margin:0px 100px;
+}
+#contactUsIconText {
+	height:72px;
+	text-align:center;
+	color:white;
+}
+#contactUsIconText p {
+	width:150px;
+}
+#contactUsIconText div {
+	vertical-align:top;
+	height:72px;
+	width:238px;
+	display:inline-block;
+}
+.contactUsName {
+	color:rgb(255,198,0);
+	font-size:36px;
+}
+.contactUsPosition {
+	color:white;
+	font-size:14px;
+}
+#advisorHR {
+	width:680px;
+	border-color:white;
+}
+#managerHR {
+	width:250px;
+	border-color:white;
 }
